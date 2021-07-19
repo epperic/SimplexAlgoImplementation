@@ -2,6 +2,10 @@
 
 Spezifikationen:
 
+Benchmark Ordner muss sich auf dem Desktop befinden, damit er eingelesen werden kann!
+Zielframework: netcoreapp 3.1
+Zielruntime: win-x64
+
 Windows 10 64 Bit .Net Core 3.1 
 C# Konsolenanwendung
 
@@ -12,13 +16,13 @@ Beim start des Programms wird der Benchmark-Ordner eingelesen und die Auswahl an
 //
 7 files have been found inside the Benchmark folder:
 
-1. ...\SimplexAlgoImplementation\Benchmarks\KI_10.txt
-2. ...\SimplexAlgoImplementation\Benchmarks\KI_15.txt
-3. ...\SimplexAlgoImplementation\Benchmarks\KI_20.txt
-4. ...\SimplexAlgoImplementation\Benchmarks\KI_30.txt
-5. ...\SimplexAlgoImplementation\Benchmarks\KI_5.txt
-6. ...\SimplexAlgoImplementation\Benchmarks\KI_8.txt
-7. ...\SimplexAlgoImplementation\Benchmarks\KI_9.txt
+1. ...\Desktop\Benchmarks\KI_10.txt
+2. ...\Desktop\Benchmarks\KI_15.txt
+3. ...\Desktop\Benchmarks\KI_20.txt
+4. ...\Desktop\Benchmarks\KI_30.txt
+5. ...\Desktop\Benchmarks\KI_5.txt
+6. ...\Desktop\Benchmarks\KI_8.txt
+7. ...\Desktop\Benchmarks\KI_9.txt
 
 Please enter the number of the Benchmark you want to run.
 //

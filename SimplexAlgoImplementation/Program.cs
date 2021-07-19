@@ -42,7 +42,7 @@ namespace SimplexAlgoImplementation
             string selection = "";
             try
             {
-                string docPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Benchmarks";
+                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Benchmarks";
                 var files = from file in Directory.EnumerateFiles(docPath, "*.txt", SearchOption.AllDirectories)
                             select new { File = file };
                 int count = 1;

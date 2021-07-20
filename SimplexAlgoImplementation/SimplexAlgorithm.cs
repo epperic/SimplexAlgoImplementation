@@ -15,8 +15,8 @@ namespace SimplexAlgoImplementation
         ObjectiveFunction objFunction;
         double[] objFunctionValues; // coefficients of objective function variables
         double[] pivotValues; // initially the constraint values, which are being altered by each iteration
-        double[][] matrix; // matrix of constraint values, joined with slack and artificial variables (BigM specific)
-        bool[] indexArtificialVariable; // bool[] which keeps track of which index is an artificial variable
+        double[][] matrix; // matrix of constraint values, joined with slack and minimization (artificial) variables (BigM specific)
+        bool[] indecesToIgnore; // bool[] which keeps track of which index is a minimization (artificial) variable and is therefore to be ignored
         double[] Zj; // Big M Method - Zj is the sum of all constraint coefficients in each column of the matrix
         double[] Cj; // Big M Method - Cj is initially the objFunctionValues but will be altered with each iteration
         int[] IndecesOfPivot; // saves the index of a pivot element 
@@ -64,10 +64,10 @@ namespace SimplexAlgoImplementation
                 //saves the position of the pivot elements inside the array
             }
 
-            indexArtificialVariable = new bool[joinedMatrix.Length];
+            indecesToIgnore = new bool[joinedMatrix.Length];
             for (int i = 0; i < constraints.Length; i++)
             {//saves which index is an artificial variable
-                indexArtificialVariable[indexArtificialVariable.Length - i - 1] = true;
+                indecesToIgnore[indecesToIgnore.Length - i - 1] = true;
             }
 
             this.pivotValues = coefficients;
@@ -148,7 +148,7 @@ namespace SimplexAlgoImplementation
                 double sumOfConstraintCoefficientsInColumn = 0;
                 for (int b = 0; b < matrix.First().Length; b++)
                 {
-                    if (indexArtificialVariable[IndecesOfPivot[b]])
+                    if (indecesToIgnore[IndecesOfPivot[b]])
                     {
                         sumOfConstraintCoefficientsInColumn -= matrix[a][b];
                     }
@@ -157,7 +157,7 @@ namespace SimplexAlgoImplementation
                         sum += objFunctionValues[IndecesOfPivot[b]] * matrix[a][b];
                     }
                 }
-                Zj[a] = indexArtificialVariable[a] ? 1 : sumOfConstraintCoefficientsInColumn; //Zj filled with sum of Constraint coefficients and filled with 1's for surplus vars.
+                Zj[a] = indecesToIgnore[a] ? 1 : sumOfConstraintCoefficientsInColumn; //Zj filled with sum of Constraint coefficients and filled with 1's for surplus vars.
                 Cj[a] = sum - objFunctionValues[a];
             }
         }
@@ -216,7 +216,7 @@ namespace SimplexAlgoImplementation
             {
                 if (array[i] < 0)
                 {
-                    if (!indexArtificialVariable[i]) //only respect indices which are not artificial variables
+                    if (!indecesToIgnore[i]) //only respect indices which are not artificial variables
                     {
                         if (index == -1)
                         {

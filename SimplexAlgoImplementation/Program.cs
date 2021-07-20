@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -19,7 +18,7 @@ namespace SimplexAlgoImplementation
                 double rightHandSide = benchmarkParser.rightHandside[i];
                 constraints[i] = new Constraint(variables, rightHandSide);
             }
-           
+
             ObjectiveFunction objectiveFunction = new ObjectiveFunction(benchmarkParser.parsedObjectiveFunction);
             SimplexAlgorithm simplex = new SimplexAlgorithm(objectiveFunction, constraints);
             Tuple<FinalSolutionPresenter, SimplexResult> result = simplex.calcResult();

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SimplexAlgoImplementation
 {
@@ -38,7 +36,8 @@ namespace SimplexAlgoImplementation
             Console.WriteLine("All x Values: ");
             Console.WriteLine();
             var xValuesArray = createXValuesArray(indecesOfPivot, pivotValues, amountOfConstraintVariables);
-            for( int i = 0; i < xValuesArray.Length; i++){
+            for (int i = 0; i < xValuesArray.Length; i++)
+            {
                 Console.WriteLine("x" + $"{i}" + ": " + xValuesArray[i]);
             }
             Console.ReadLine();

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SimplexAlgoImplementation
+﻿namespace SimplexAlgoImplementation
 {
     public class Constraint
     {

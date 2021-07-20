@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
 
 namespace SimplexAlgoImplementation
@@ -44,7 +43,7 @@ namespace SimplexAlgoImplementation
                                 string[] objectiveFunction = line.Split(splitter, System.StringSplitOptions.RemoveEmptyEntries);
                                 //contains whole block e.g "10*x7"
                                 parsedObjectiveFunction = extractCoefficients(objectiveFunction);
-                            } 
+                            }
                             else // line is a constraint
                             {
                                 line = line.Substring(3);
